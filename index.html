@@ -3,7 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oxygen Arts - Portfolio</title>
+  <title>Oxygen Arts Guyana | Professional Artist & Art Therapy Services</title>
+  <meta name="description" content="Oxygen Arts Guyana - Professional art services and wellness therapy by Michael Griffith. Featuring 15 years of artistic excellence in traditional and digital media, plus art therapy, meditation, and hypnotherapy services.">
+  <meta name="keywords" content="art, artist, Guyana, art gallery, portrait, digital art, art therapy, meditation, hypnotherapy, wellness, Michael Griffith, Oxygen Arts">
+  <meta name="author" content="Michael Griffith">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="geo.region" content="GY">
+  <meta name="geo.country" content="Guyana">
+  <meta name="geo.placename" content="Guyana">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Oxygen Arts Guyana | Professional Artist & Art Therapy Services">
+  <meta property="og:description" content="Professional art services and wellness therapy combining 15 years of artistic excellence with mental health expertise.">
+  <meta property="og:url" content="https://oxygenarts.com">
+  <meta property="og:image" content="images/PHOTO-2021-03-15-15-59-20.jpg">
+  <meta property="og:site_name" content="Oxygen Arts">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Oxygen Arts Guyana | Professional Artist & Art Therapy Services">
+  <meta name="twitter:description" content="Professional art services and wellness therapy combining artistic excellence with mental health expertise.">
+  <meta name="twitter:image" content="images/PHOTO-2021-03-15-15-59-20.jpg">
+  
+  <!-- Additional SEO Tags -->
+  <meta name="theme-color" content="#1f2d5f">
+  <link rel="canonical" href="https://oxygenarts.com">
+  
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="icon" href="images/PHOTO-2021-03-15-15-59-20.jpg">
   <style>
@@ -26,16 +53,105 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #1f2d5f 0%, #2d3d6b 50%, #5a7fc8 100%);
+      background: linear-gradient(135deg, #1f2d5f 0%, #2d3d6b 50%, #5a7fc8 100%), url('images/Traditonal /PHOTO-2025-12-03-12-33-38.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 9999;
       padding: 20px;
     }
+    .intro-page::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(31, 45, 95, 0.65);
+      z-index: -1;
+    }
+    .intro-floating-images {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .intro-floating-img {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 3px solid white;
+      border-radius: 8px;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+    .intro-img-1 {
+      top: 10%;
+      left: 5%;
+      animation: slideRight 8s infinite;
+    }
+    .intro-img-2 {
+      top: 10%;
+      right: 5%;
+      animation: slideLeft 8s infinite;
+    }
+    .intro-img-3 {
+      bottom: 15%;
+      left: 8%;
+      animation: slideUp 8s infinite;
+    }
+    .intro-img-4 {
+      bottom: 15%;
+      right: 8%;
+      animation: slideDown 8s infinite;
+    }
+    @media (max-width: 768px) {
+      .intro-floating-images {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      .intro-floating-img {
+        position: absolute !important;
+        width: 75px !important;
+        height: 75px !important;
+        border: 2px solid white !important;
+        border-radius: 6px !important;
+        opacity: 0.8 !important;
+        animation: auto !important;
+        transform: auto !important;
+      }
+      .intro-img-1 {
+        top: 8% !important;
+        left: 5% !important;
+        animation: slideRight 8s infinite !important;
+      }
+      .intro-img-2 {
+        top: 8% !important;
+        right: 5% !important;
+        animation: slideLeft 8s infinite !important;
+      }
+      .intro-img-3 {
+        bottom: 12% !important;
+        left: 8% !important;
+        animation: slideUp 8s infinite !important;
+      }
+      .intro-img-4 {
+        bottom: 12% !important;
+        right: 8% !important;
+        animation: slideDown 8s infinite !important;
+      }
+    }
     .intro-content {
       text-align: center;
       color: white;
+      position: relative;
+      z-index: 10;
     }
     .intro-content img {
       max-width: 200px;
@@ -53,6 +169,33 @@
     @media (max-width: 768px) {
       .intro-content h1 {
         display: none;
+      }
+      .intro-content {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 15px;
+      }
+      .intro-content img {
+        max-width: 120px;
+        margin-bottom: 20px;
+      }
+      .intro-content p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+      }
+      .intro-buttons {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 100%;
+      }
+      .intro-btn {
+        padding: 20px;
+        min-height: 120px;
+        font-size: 1.1rem;
+      }
+      .intro-btn svg {
+        width: 35px;
+        height: 35px;
       }
     }
     .intro-content p {
@@ -75,7 +218,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       border: 3px solid white;
-      background: rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, rgba(31, 45, 95, 0.8) 0%, rgba(90, 127, 200, 0.8) 100%);
       color: white;
       text-decoration: none;
       display: flex;
@@ -83,12 +226,13 @@
       justify-content: center;
       gap: 15px;
       min-height: 150px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
     .intro-btn:hover {
-      background: white;
-      color: #1f2d5f;
+      background: linear-gradient(135deg, rgba(31, 45, 95, 0.95) 0%, rgba(90, 127, 200, 0.95) 100%);
       transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      color: white;
     }
     .intro-btn svg {
       width: 40px;
@@ -700,6 +844,12 @@
 <body>
   <!-- Intro Landing Page -->
   <div id="introPage" class="intro-page">
+    <div class="intro-floating-images">
+      <img src="images/Traditonal /160558093_242870784232148_8475236232214293900_n.jpg" alt="Art" class="intro-floating-img intro-img-1">
+      <img src="images/Digital/160924119_283960693138603_6854454029605684278_n.jpg" alt="Art" class="intro-floating-img intro-img-2">
+      <img src="images/Traditonal /160277726_1121393874972969_7849270369081973265_n.jpg" alt="Art" class="intro-floating-img intro-img-3">
+      <img src="images/Digital/161543993_277679310475961_4499333932749047142_n.jpg" alt="Art" class="intro-floating-img intro-img-4">
+    </div>
     <div class="intro-content">
       <img src="images/PHOTO-2021-03-15-15-59-20.jpg" alt="Oxygen Arts Logo">      <p>Discover the transformative power of art</p>
       <div class="intro-buttons">
@@ -729,7 +879,7 @@
       </a>
       <ul class="hidden md:flex space-x-8">
         <li><a href="#home" class="nav-link text-white hover:text-blue-200 transition">Home</a></li>
-        <li><a href="#allworks" class="nav-link text-white hover:text-blue-200 transition">Gallery</a></li>
+        <li><a href="#artworks" class="nav-link text-white hover:text-blue-200 transition">Gallery</a></li>
         <li><a href="#about" class="nav-link text-white hover:text-blue-200 transition">About</a></li>
         <li><a href="#projects" class="nav-link text-white hover:text-blue-200 transition">Projects</a></li>
         <li><a href="#contact" class="nav-link text-white hover:text-blue-200 transition">Contact</a></li>
@@ -741,7 +891,7 @@
     <div id="mobile-menu" class="hidden md:hidden bg-blue-800">
       <ul class="flex flex-col space-y-2 px-4 py-4">
         <li><a href="#home" class="text-white hover:text-blue-200 transition block py-2">Home</a></li>
-        <li><a href="#allworks" class="text-white hover:text-blue-200 transition block py-2">All Artworks</a></li>
+        <li><a href="#artworks" class="text-white hover:text-blue-200 transition block py-2">Gallery</a></li>
         <li><a href="#about" class="text-white hover:text-blue-200 transition block py-2">About</a></li>
         <li><a href="#projects" class="text-white hover:text-blue-200 transition block py-2">Projects</a></li>
         <li><a href="#contact" class="text-white hover:text-blue-200 transition block py-2">Contact</a></li>
@@ -754,17 +904,16 @@
   <section id="home" class="hero-frame">
     <div class="hero-border">
       <div class="hero-images">
-        <img src="images/116946381_2808868086003167_1617765084909351254_o.jpg" alt="Art" class="hero-image image-top-left">
-        <img src="images/127799921_143832643779530_4536317290387938840_n.jpg" alt="Art" class="hero-image image-top-right">
-        <img src="images/128439597_388619335584670_217926013002644080_n.jpg" alt="Art" class="hero-image image-bottom-left">
-        <img src="images/138229734_1573265082866119_9018020920845542259_n.jpg" alt="Art" class="hero-image image-bottom-right">
-        <img src="images/148701567_211829123963825_3711314587462814738_n.jpg" alt="Art" class="hero-image image-left">
-        <img src="images/149424619_425574815321690_4513740044504322037_n.jpg" alt="Art" class="hero-image image-right">
+        <img src="images/Traditonal /161047863_2889736214637866_4974832619129555862_n.jpg" alt="Art" class="hero-image image-top-left">
+        <img src="images/Traditonal /160558093_242870784232148_8475236232214293900_n.jpg" alt="Art" class="hero-image image-top-right">
+        <img src="images/Digital/161395653_1587106478155432_2495291344825005523_n.jpg" alt="Art" class="hero-image image-bottom-right">
+        <img src="images/Traditonal /160525094_127671609233459_1313667615221997510_n.jpg" alt="Art" class="hero-image image-left">
+        <img src="images/Digital/161662750_297817878598364_2047019579553579755_n.jpg" alt="Art" class="hero-image image-right">
       </div>
       <div class="hero-content">
-        <h1>Oxygen Arts</h1>
-        <p>Discover exceptional artworks and creative visions. A curated collection showcasing contemporary and traditional art forms.</p>
-        <a href="#allworks" class="inline-block bg-white text-navy px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition" style="color: #1f2d5f;">Explore Gallery</a>
+        <h1>Art and Wellbeing</h1>
+        <p> Featuring 15 years of professional artistic excellence in traditional and digital media.</p>
+        <a href="artworks.html" class="inline-block bg-white text-navy px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition" style="color: #1f2d5f;">Explore Gallery</a>
       </div>
     </div>
   </section>
@@ -772,12 +921,12 @@
   <!-- About Section -->
   <section id="about" class="py-16 md:py-24 bg-white">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12" style="color: #1f2d5f;">About the Artist</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12" style="color: #1f2d5f;">About Michael Griffith</h2>
       <div class="grid md:grid-cols-2 gap-12 items-start">
         <div>
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">Welcome to Oxygen Arts, the creative vision of a self-taught artist dedicated to exploring the limitless possibilities of contemporary art. With unwavering passion and relentless dedication, this talented creator has mastered multiple mediums, pushing the boundaries of artistic expression.</p>
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">Each piece tells a story of artistic evolution, blending traditional techniques with innovative digital approaches. From acrylics to pencil work, intricate colored pencil designs to  digital art, every creation reflects a commitment to excellence and authentic creative vision.</p>
-          <p class="text-lg text-gray-700 mb-8 leading-relaxed font-semibold" style="color: #1f2d5f;">Having created commissioned art pieces for well-known individuals and brands, this artist's work has transcended the studio to inspire and captivate audiences worldwide.</p>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">Michael Griffith is the artist and proprietor behind Oxygen Arts Guyana, a business centered on art and wellbeing. With almost 15 years of professional artistic practice, Michael is proficient in both traditional and digital media, displaying remarkable versatility spanning hyper-realistic portraits, caricatures, book illustrations, concept art, and commercial art.</p>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">The 39-year-old has won first prize at several national art competitions and studied at both the Burrows School of Art and the University of Guyana, where he graduated at the top of his class. His works have been exhibited both nationally and internationally and are often described as thought-provoking.</p>
+          <p class="text-lg text-gray-700 mb-8 leading-relaxed font-semibold" style="color: #1f2d5f;">Apart from being an exceptional visual artist, Michael is also a mental health practitioner with a passion for personal growth and wellbeing. He graduated from the American University of Peace Studies with a degree in psychology and is currently completing his master's in clinical psychology.</p>
           <div class="space-y-4">
             <div class="flex items-start space-x-4">
               <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
@@ -786,8 +935,8 @@
                 </svg>
               </div>
               <div>
-                <h3 class="font-bold text-lg" style="color: #1f2d5f;">Master of Multiple Mediums</h3>
-                <p class="text-gray-600">Acrylic, Pencil, Colored Pencil & Digital Art</p>
+                <h3 class="font-bold text-lg" style="color: #1f2d5f;">Versatile Artist</h3>
+                <p class="text-gray-600">Hyper-realistic Portraits, Caricatures, Book Illustrations, Concept Art & Commercial Art</p>
               </div>
             </div>
             <div class="flex items-start space-x-4">
@@ -797,8 +946,8 @@
                 </svg>
               </div>
               <div>
-                <h3 class="font-bold text-lg" style="color: #1f2d5f;">Commissioned Works</h3>
-                <p class="text-gray-600">Created for prominent clients and recognized figures</p>
+                <h3 class="font-bold text-lg" style="color: #1f2d5f;">Award-Winning Artist</h3>
+                <p class="text-gray-600">Multiple first prizes at national art competitions, exhibited nationally and internationally</p>
               </div>
             </div>
             <div class="flex items-start space-x-4">
@@ -808,8 +957,8 @@
                 </svg>
               </div>
               <div>
-                <h3 class="font-bold text-lg" style="color: #1f2d5f;">Self-Taught Excellence</h3>
-                <p class="text-gray-600">Driven by passion and continuous artistic growth</p>
+                <h3 class="font-bold text-lg" style="color: #1f2d5f;">Mental Health Practitioner</h3>
+                <p class="text-gray-600">Psychology degree from American University of Peace Studies, pursuing clinical psychology master's</p>
               </div>
             </div>
           </div>
@@ -829,56 +978,76 @@
   <!-- Projects Section -->
   <section id="projects" class="py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-4">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12" style="color: #1f2d5f;">New Projects & Viewings</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12" style="color: #1f2d5f;">Services Offered</h2>
       <div class="grid md:grid-cols-3 gap-8">
         <div class="project-card bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
-          <img src="images/160037087_709942786350680_7461114530839342882_n.jpg" alt="Project 1" class="w-full h-64 object-contain bg-gray-100">
+          <img src="images/Digital/160551087_208977111028048_744843944256489164_n.jpg" alt="Commercial Art" class="w-full h-64 object-contain bg-gray-100">
           <div class="p-6">
-            <h3 class="text-xl font-bold mb-2" style="color: #1f2d5f;">Spring Exhibition 2025</h3>
-            <p class="text-gray-600 mb-4">A stunning collection featuring contemporary works exploring themes of identity and transformation.</p>
-            <p class="text-sm text-blue-600 font-semibold">Coming Soon</p>
+            <h3 class="text-xl font-bold mb-2" style="color: #1f2d5f;">Commercial Art</h3>
+            <p class="text-gray-600 mb-4">Professional commercial art services in both digital and traditional media for businesses and brands.</p>
+            <a href="#contact" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Get Started</a>
           </div>
         </div>
         <div class="project-card bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
-          <img src="images/160046317_166648511947586_2443049358028515747_n.jpg" alt="Project 2" class="w-full h-64 object-contain bg-gray-100">
+          <img src="images/Traditonal /160525094_127671609233459_1313667615221997510_n.jpg" alt="Portraits" class="w-full h-64 object-contain bg-gray-100">
           <div class="p-6">
-            <h3 class="text-xl font-bold mb-2" style="color: #1f2d5f;">Collaborative Series</h3>
-            <p class="text-gray-600 mb-4">Join us in celebrating the fusion of multiple artistic styles and mediums in one cohesive exhibition.</p>
-            <p class="text-sm text-blue-600 font-semibold">In Progress</p>
+            <h3 class="text-xl font-bold mb-2" style="color: #1f2d5f;">Portraits & Caricatures</h3>
+            <p class="text-gray-600 mb-4">Hyper-realistic portrait commissions and custom caricatures capturing personality and expression.</p>
+            <a href="#contact" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Get Started</a>
           </div>
         </div>
         <div class="project-card bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
-          <img src="images/160167945_262393252029673_7449999809806767348_n.jpg" alt="Project 3" class="w-full h-64 object-contain bg-gray-100">
+          <img src="images/Digital/161668871_2890507414505205_7653681837665520857_n.jpg" alt="Illustration" class="w-full h-64 object-contain bg-gray-100">
           <div class="p-6">
-            <h3 class="text-xl font-bold mb-2" style="color: #1f2d5f;">Artist Residency</h3>
-            <p class="text-gray-600 mb-4">An exclusive residency program bringing emerging and established artists together for creative collaboration.</p>
-            <p class="text-sm text-blue-600 font-semibold">Open for Applications</p>
+            <h3 class="text-xl font-bold mb-2" style="color: #1f2d5f;">Concept Design & Book Illustration</h3>
+            <p class="text-gray-600 mb-4">Creative concept designs and compelling book illustrations for publishers and authors.</p>
+            <a href="#contact" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Get Started</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- All Artworks Section -->
-  <section id="allworks" class="py-16 md:py-24 bg-white">
+  <!-- Art Categories Section -->
+  <section id="artworks" class="py-16 md:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12" style="color: #1f2d5f;">All Artworks</h2>
-      <p class="text-gray-600 mb-8 text-center" id="gridHelpText">Click on any image to view it larger</p>
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12 text-center" style="color: #1f2d5f;">Explore My Work</h2>
       
-      <!-- Mobile Carousel View -->
-      <div class="carousel-container active" id="mobileCarousel">
-        <div class="carousel-wrapper">
-          <img id="carouselImage" class="carousel-image active" src="" alt="Artwork">
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Traditional Arts -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105 cursor-pointer" onclick="window.location.href='artworks.html'">
+          <div class="relative h-96 overflow-hidden">
+            <img src="images/Traditonal /161268625_1237325413349405_3741252169905017496_n.jpg" alt="Traditional Arts" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center hover:bg-opacity-20 transition">
+              <div class="text-center text-white">
+                <h3 class="text-4xl font-bold mb-2">Traditional Arts</h3>
+                <p class="text-lg">Acrylic • Pencil • Colored Pencil</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <p class="text-gray-700 mb-4">Explore my collection of traditional artwork featuring hyper-realistic portraits, detailed sketches, and vibrant acrylic paintings created over 15 years of artistic practice.</p>
+            <p class="inline-block bg-white text-navy px-6 py-2 rounded-lg font-semibold" style="color: #1f2d5f;">View Gallery →</p>
+          </div>
         </div>
-        <div class="carousel-thumbnails" id="carouselThumbnails"></div>
-        <div class="carousel-controls">
-          <button class="carousel-button" onclick="prevCarousel()">← Previous</button>
-          <div class="carousel-counter"><span id="carouselCounter">1</span> / <span id="carouselTotal">0</span></div>
-          <button class="carousel-button" onclick="nextCarousel()">Next →</button>
+
+        <!-- Digital Arts -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105 cursor-pointer" onclick="window.location.href='artworks.html'">
+          <div class="relative h-96 overflow-hidden">
+            <img src="images/Digital/161543993_277679310475961_4499333932749047142_n.jpg" alt="Digital Arts" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center hover:bg-opacity-20 transition">
+              <div class="text-center text-white">
+                <h3 class="text-4xl font-bold mb-2">Digital Arts</h3>
+                <p class="text-lg">Digital Illustration • Concept Art • Design</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <p class="text-gray-700 mb-4">Discover my digital creations including concept art, digital illustrations, book illustrations, and innovative design work that pushes creative boundaries.</p>
+            <p class="inline-block bg-white text-navy px-6 py-2 rounded-lg font-semibold" style="color: #1f2d5f;">View Gallery →</p>
+          </div>
         </div>
       </div>
-      
-      <!-- Desktop Grid View -->
-      <div class="lightbox-gallery" id="allArtworks"></div>
     </div>
   </section>
 
@@ -912,18 +1081,18 @@
           </div>
         </div>
         <div>
-          <form class="contact-form space-y-4">
+          <form class="contact-form space-y-4" action="https://formspree.io/f/xdkqzqng" method="POST">
             <div>
-              <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
+              <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
             </div>
             <div>
-              <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
+              <input type="email" name="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
             </div>
             <div>
-              <input type="text" placeholder="Subject" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
+              <input type="text" name="subject" placeholder="Subject" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
             </div>
             <div>
-              <textarea placeholder="Your Message" rows="5" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required></textarea>
+              <textarea name="message" placeholder="Your Message" rows="5" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required></textarea>
             </div>
             <button type="submit" class="btn-submit w-full px-6 py-3 rounded-lg">Send Message</button>
           </form>
@@ -992,75 +1161,67 @@
       <h2 class="section-title text-3xl md:text-4xl font-bold mb-12 text-center" style="color: #1f2d5f;">Our Services</h2>
       <div class="grid md:grid-cols-2 gap-12 mb-12">
         <!-- Group Meditation -->
-        <div class="bg-gray-50 rounded-lg p-8 shadow-lg hover:shadow-xl transition">
-          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
-            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
-            </svg>
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+          <img src="images/therapy/PHOTO-2025-12-02-22-03-40.jpg" alt="Meditation" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Meditation Sessions</h3>
+            <p class="text-gray-600 mb-4">Experience guided meditation sessions regularly hosted with emphasis on self-awareness and emotional intelligence. Build inner peace and mental clarity through mindfulness practice.</p>
+            <ul class="space-y-2 text-gray-600 mb-6">
+              <li>✓ Public & private sessions</li>
+              <li>✓ Self-awareness focus</li>
+              <li>✓ Emotional intelligence training</li>
+              <li>✓ Personalized guidance</li>
+            </ul>
+            <a href="#therapy-contact" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Book Session</a>
           </div>
-          <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Group Meditation</h3>
-          <p class="text-gray-600 mb-4">Join our guided meditation sessions in a supportive group setting. Learn techniques to reduce stress, improve focus, and cultivate inner peace. Perfect for beginners and experienced practitioners alike.</p>
-          <ul class="space-y-2 text-gray-600 mb-6">
-            <li>✓ Weekly guided sessions</li>
-            <li>✓ Mindfulness training</li>
-            <li>✓ Breathing techniques</li>
-            <li>✓ Stress relief focus</li>
-          </ul>
-          <p class="font-semibold" style="color: #5a7fc8;">Sessions available throughout the week</p>
         </div>
 
         <!-- Hypnotherapy -->
-        <div class="bg-gray-50 rounded-lg p-8 shadow-lg hover:shadow-xl transition">
-          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
-            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
-            </svg>
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+          <img src="images/therapy/PHOTO-2025-12-02-22-03-41.jpg" alt="Hypnotherapy" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Hypnotherapy</h3>
+            <p class="text-gray-600 mb-4">Professional hypnotherapy services delivered by a certified practitioner to help you break negative habits, overcome anxiety, and achieve your personal goals. Unlock your subconscious potential.</p>
+            <ul class="space-y-2 text-gray-600 mb-6">
+              <li>✓ Habit breaking</li>
+              <li>✓ Anxiety management</li>
+              <li>✓ Goal achievement</li>
+              <li>✓ Professional facilitation</li>
+            </ul>
+            <a href="#therapy-contact" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Book Session</a>
           </div>
-          <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Hypnotherapy</h3>
-          <p class="text-gray-600 mb-4">Professional hypnotherapy sessions to help you overcome challenges, manage anxiety, break habits, and achieve personal goals. Work with our certified therapist in individual or group settings.</p>
-          <ul class="space-y-2 text-gray-600 mb-6">
-            <li>✓ Habit breaking</li>
-            <li>✓ Anxiety management</li>
-            <li>✓ Goal achievement</li>
-            <li>✓ Personal empowerment</li>
-          </ul>
-          <p class="font-semibold" style="color: #5a7fc8;">Individual sessions available</p>
         </div>
 
         <!-- Creative Expression -->
-        <div class="bg-gray-50 rounded-lg p-8 shadow-lg hover:shadow-xl transition">
-          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
-            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-            </svg>
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+          <img src="images/therapy/PHOTO-2025-12-02-22-06-53.jpg" alt="Art Therapy" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Art Therapy</h3>
+            <p class="text-gray-600 mb-4">Explore the healing power of artistic creation. A safe, non-judgmental space for creative self-expression and personal growth. Benefit from the complementary relationship between art and psychology.</p>
+            <ul class="space-y-2 text-gray-600 mb-6">
+              <li>✓ Non-judgmental space</li>
+              <li>✓ All skill levels welcome</li>
+              <li>✓ Healing focused</li>
+              <li>✓ Personal growth</li>
+            </ul>
+            <a href="#therapy-contact" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Book Session</a>
           </div>
-          <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Creative Expression Art Therapy</h3>
-          <p class="text-gray-600 mb-4">Enhance your creativity through guided art therapy sessions. Express emotions, process experiences, and discover healing through various artistic mediums without requiring any prior art experience.</p>
-          <ul class="space-y-2 text-gray-600 mb-6">
-            <li>✓ Non-judgmental space</li>
-            <li>✓ All skill levels welcome</li>
-            <li>✓ Emotional healing</li>
-            <li>✓ Self-discovery</li>
-          </ul>
-          <p class="font-semibold" style="color: #5a7fc8;">Group and individual sessions</p>
         </div>
 
         <!-- Wellness Workshops -->
-        <div class="bg-gray-50 rounded-lg p-8 shadow-lg hover:shadow-xl transition">
-          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
-            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-            </svg>
+        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+          <img src="images/therapy/PHOTO-2025-12-02-22-06-54.jpg" alt="Wellness" class="w-full h-64 object-cover">
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Wellness Workshops</h3>
+            <p class="text-gray-600 mb-4">Specialized workshops combining art, meditation, and therapeutic techniques. Topics include stress management, emotional wellness, mindfulness, and self-care practices.</p>
+            <ul class="space-y-2 text-gray-600 mb-6">
+              <li>✓ Themed workshops</li>
+              <li>✓ Expert facilitation</li>
+              <li>✓ Take-home tools</li>
+              <li>✓ Community building</li>
+            </ul>
+            <a href="#therapy-contact" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Book Workshop</a>
           </div>
-          <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Wellness Workshops</h3>
-          <p class="text-gray-600 mb-4">Specialized workshops combining art, meditation, and therapeutic techniques. Topics include stress management, emotional wellness, mindfulness, and self-care practices.</p>
-          <ul class="space-y-2 text-gray-600 mb-6">
-            <li>✓ Themed workshops</li>
-            <li>✓ Expert facilitation</li>
-            <li>✓ Take-home tools</li>
-            <li>✓ Community building</li>
-          </ul>
-          <p class="font-semibold" style="color: #5a7fc8;">Monthly workshops available</p>
         </div>
       </div>
     </div>
@@ -1072,8 +1233,8 @@
       <h2 class="section-title text-3xl md:text-4xl font-bold mb-12 text-center" style="color: #1f2d5f;">About Our Approach</h2>
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">At Oxygen Arts, we believe in the transformative power of creative expression and mindfulness practices. Our integrated approach combines art therapy, meditation, and hypnotherapy to address mental, emotional, and spiritual well-being.</p>
-          <p class="text-lg text-gray-700 mb-6 leading-relaxed">Whether you're seeking stress relief, personal growth, or healing from past experiences, our certified therapists and facilitators are here to guide you on your wellness journey in a safe, supportive environment.</p>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">Michael Griffith believes that art and psychology are complementary disciplines, where one helps the individual to better understand the self, and the other helps to refine the expressive process. With his wealth of knowledge and experience as both a visual artist and mental health practitioner, he offers integrated services combining art therapy, meditation, and hypnotherapy.</p>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">Whether you're seeking stress relief, personal growth, or healing from past experiences, Michael is here to guide you on your wellness journey in a safe, supportive environment built on compassion and professional expertise.</p>
           <div class="space-y-4 mt-8">
             <div class="flex items-start space-x-4">
               <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%); color: white;">✓</div>
@@ -1109,6 +1270,44 @@
     </div>
   </section>
 
+  <!-- Therapy Gallery Section -->
+  <section id="therapy-gallery" class="py-16 md:py-24" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12 text-center text-white">Our Wellness Journey</h2>
+      
+      <!-- Gallery Grid -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
+          <img src="images/therapy/PHOTO-2025-12-02-22-03-40 2.jpg" alt="Wellness" class="w-full h-full object-cover">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
+          <img src="images/therapy/PHOTO-2025-12-02-22-03-40 3.jpg" alt="Wellness" class="w-full h-full object-cover">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
+          <img src="images/therapy/PHOTO-2025-12-02-22-03-40 4.jpg" alt="Wellness" class="w-full h-full object-cover">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
+          <img src="images/therapy/PHOTO-2025-12-02-22-03-40 6.jpg" alt="Wellness" class="w-full h-full object-cover">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
+          <img src="images/therapy/PHOTO-2025-12-02-22-03-41 2.jpg" alt="Wellness" class="w-full h-full object-cover">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
+          <img src="images/therapy/PHOTO-2025-12-02-22-03-41 4.jpg" alt="Wellness" class="w-full h-full object-cover">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
+          <img src="images/therapy/PHOTO-2025-12-02-22-06-53 2.jpg" alt="Wellness" class="w-full h-full object-cover">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
+          <img src="images/therapy/PHOTO-2025-12-02-22-06-53 3.jpg" alt="Wellness" class="w-full h-full object-cover">
+        </div>
+        <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
+          <img src="images/therapy/PHOTO-2025-12-02-22-06-54 2.jpg" alt="Wellness" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Therapy Contact Section -->
   <section id="therapy-contact" class="py-16 md:py-24 bg-white">
     <div class="max-w-4xl mx-auto px-4">
@@ -1136,15 +1335,15 @@
           </div>
         </div>
         <div>
-          <form class="contact-form space-y-4">
+          <form class="contact-form space-y-4" action="https://formspree.io/f/xdkqzqng" method="POST">
             <div>
-              <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
+              <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
             </div>
             <div>
-              <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
+              <input type="email" name="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
             </div>
             <div>
-              <select class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900" required>
+              <select name="service" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900" required>
                 <option value="">Select Service</option>
                 <option value="meditation">Group Meditation</option>
                 <option value="hypnotherapy">Hypnotherapy</option>
@@ -1153,7 +1352,7 @@
               </select>
             </div>
             <div>
-              <textarea placeholder="Tell us about your interests or goals" rows="4" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required></textarea>
+              <textarea name="message" placeholder="Tell us about your interests or goals" rows="4" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required></textarea>
             </div>
             <button type="submit" class="btn-submit w-full px-6 py-3 rounded-lg">Request Consultation</button>
           </form>
