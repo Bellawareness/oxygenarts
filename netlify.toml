@@ -1,0 +1,17 @@
+[build]
+  command = ""
+  publish = "."
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production]
+  environment = { }
+
+[context.deploy-preview]
+  environment = { }
+
+[context.branch-deploy]
+  environment = { }
