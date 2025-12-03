@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oxygen Arts - Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="images/PHOTO-2021-03-15-15-59-20.jpg">
+  <style>
+    :root {
+      --navy: #1f2d5f;
+      --light-blue: #e8f1f8;
+    }
+    body {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e8f1f8 100%);
+      color: #1f2d5f;
+    }
+    .intro-page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1f2d5f 0%, #2d3d6b 50%, #5a7fc8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .intro-content {
+      text-align: center;
+      color: white;
+    }
+    .intro-content img {
+      max-width: 200px;
+      margin-bottom: 40px;
+    }
+    .intro-content h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .intro-content p {
+      font-size: 1.2rem;
+      margin-bottom: 60px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    .intro-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .intro-btn {
+      padding: 25px;
+      border-radius: 15px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 3px solid white;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      min-height: 150px;
+    }
+    .intro-btn:hover {
+      background: white;
+      color: #1f2d5f;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+    .intro-btn svg {
+      width: 40px;
+      height: 40px;
+    }
+    .hidden-page {
+      display: none;
+    }
+    .navbar-fixed {
+      background: linear-gradient(to bottom, rgba(31, 45, 95, 0.95), rgba(31, 45, 95, 0.9));
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #5a7fc8;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .hero {
+      background: linear-gradient(135deg, rgba(31, 45, 95, 0.05) 0%, rgba(90, 127, 200, 0.05) 100%);
+      border-bottom: 1px solid rgba(31, 45, 95, 0.1);
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 1 / 1;
+      background: white;
+      box-shadow: 0 4px 15px rgba(31, 45, 95, 0.1);
+      transition: all 0.3s ease;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(31, 45, 95, 0.2);
+    }
+    .section-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 12px;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(to right, #5a7fc8, rgba(90, 127, 200, 0.3));
+    }
+    .contact-form input,
+    .contact-form textarea {
+      border: 1px solid rgba(31, 45, 95, 0.2);
+      transition: all 0.3s ease;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #5a7fc8;
+      box-shadow: 0 0 0 3px rgba(90, 127, 200, 0.1);
+    }
+    .btn-submit {
+      background: linear-gradient(135deg, #1f2d5f 0%, #2d3d6b 100%);
+      color: white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(31, 45, 95, 0.3);
+    }
+    .project-card {
+      transition: all 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+    }
+    .lightbox-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 8px;
+      padding: 10px;
+    }
+    .lightbox-item {
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 6px;
+      aspect-ratio: 1 / 1;
+      background: white;
+      transition: all 0.3s ease;
+    }
+    .lightbox-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .lightbox-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(31, 45, 95, 0.2);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow: auto;
+    }
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      position: relative;
+      background-color: #000;
+      margin: auto;
+      padding: 20px;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px 15px;
+      user-select: none;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    .modal-nav:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .modal-prev {
+      left: 10px;
+    }
+    .modal-next {
+      right: 10px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    .modal-close:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .modal-counter {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 14px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 5px 15px;
+      border-radius: 20px;
+    }
+    @keyframes slideLeft {
+      0% { transform: translateX(100%); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateX(-100%); opacity: 0; }
+    }
+    @keyframes slideRight {
+      0% { transform: translateX(-100%); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
+    @keyframes slideUp {
+      0% { transform: translateY(100%); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100%); opacity: 0; }
+    }
+    @keyframes slideDown {
+      0% { transform: translateY(-100%); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(100%); opacity: 0; }
+    }
+    @keyframes pulse-scale {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .hero-frame {
+      position: relative;
+      width: 100%;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1f2d5f;
+      overflow: hidden;
+      padding: 80px 20px 40px 20px;
+    }
+    .hero-border {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16 / 9;
+      border: 10px solid white;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(31, 45, 95, 0.9), rgba(90, 127, 200, 0.9));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), 0 0 30px rgba(0, 0, 0, 0.3);
+    }
+    .hero-images {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .hero-image {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 3px solid white;
+      border-radius: 8px;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+    .hero-image:hover {
+      opacity: 1;
+    }
+    .image-top-left {
+      top: 20px;
+      left: 20px;
+      animation: slideRight 8s infinite;
+    }
+    .image-top-right {
+      top: 20px;
+      right: 20px;
+      animation: slideLeft 8s infinite;
+    }
+    .image-bottom-left {
+      bottom: 20px;
+      left: 20px;
+      animation: slideRight 8s infinite;
+    }
+    .image-bottom-right {
+      bottom: 20px;
+      right: 20px;
+      animation: slideLeft 8s infinite;
+    }
+    .image-left {
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: slideDown 8s infinite;
+    }
+    .image-right {
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: slideUp 8s infinite;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      color: white;
+    }
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: pulse-scale 3s ease-in-out infinite;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-image {
+        width: 80px;
+        height: 80px;
+      }
+      .image-top-left {
+        top: -40px;
+        left: -40px;
+      }
+      .image-top-right {
+        top: -40px;
+        right: -40px;
+      }
+      .image-bottom-left {
+        bottom: -40px;
+        left: -40px;
+      }
+      .image-bottom-right {
+        bottom: -40px;
+        right: -40px;
+      }
+      .image-left {
+        left: -40px;
+      }
+      .image-right {
+        right: -40px;
+      }
+      .intro-content h1 {
+        font-size: 2rem;
+      }
+      .intro-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Intro Landing Page -->
+  <div id="introPage" class="intro-page">
+    <div class="intro-content">
+      <img src="images/PHOTO-2021-03-15-15-59-20.jpg" alt="Oxygen Arts Logo">
+      <h1>Oxygen Arts</h1>
+      <p>Discover the transformative power of art</p>
+      <div class="intro-buttons">
+        <button class="intro-btn" onclick="goToGallery()">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+          Art Gallery
+        </button>
+        <button class="intro-btn" onclick="goToTherapy()">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+          </svg>
+          Art Therapy
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content (Hidden by default) -->
+  <div id="mainContent" class="hidden-page">
+  <!-- Navigation Bar -->
+  <nav class="navbar-fixed fixed w-full top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center space-x-2 cursor-pointer" onclick="goBackToIntro()">
+        <img src="images/PHOTO-2021-03-15-15-59-20.jpg" alt="Oxygen Arts" class="h-12 w-auto">
+      </a>
+      <ul class="hidden md:flex space-x-8">
+        <li><a href="#home" class="nav-link text-white hover:text-blue-200 transition">Home</a></li>
+        <li><a href="#allworks" class="nav-link text-white hover:text-blue-200 transition">Gallery</a></li>
+        <li><a href="#about" class="nav-link text-white hover:text-blue-200 transition">About</a></li>
+        <li><a href="#projects" class="nav-link text-white hover:text-blue-200 transition">Projects</a></li>
+        <li><a href="#contact" class="nav-link text-white hover:text-blue-200 transition">Contact</a></li>
+        <li><a href="#" onclick="goBackToIntro(); return false;" class="nav-link text-white hover:text-blue-200 transition">Switch</a></li>
+      </ul>
+      <button id="menu-toggle" class="md:hidden text-white text-2xl">☰</button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-blue-800">
+      <ul class="flex flex-col space-y-2 px-4 py-4">
+        <li><a href="#home" class="text-white hover:text-blue-200 transition block py-2">Home</a></li>
+        <li><a href="#allworks" class="text-white hover:text-blue-200 transition block py-2">All Artworks</a></li>
+        <li><a href="#about" class="text-white hover:text-blue-200 transition block py-2">About</a></li>
+        <li><a href="#projects" class="text-white hover:text-blue-200 transition block py-2">Projects</a></li>
+        <li><a href="#contact" class="text-white hover:text-blue-200 transition block py-2">Contact</a></li>
+        <li><a href="#" onclick="goBackToIntro(); return false;" class="text-white hover:text-blue-200 transition block py-2 font-semibold border-t border-blue-600 pt-2 mt-2">Switch Path</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-frame">
+    <div class="hero-border">
+      <div class="hero-images">
+        <img src="images/116946381_2808868086003167_1617765084909351254_o.jpg" alt="Art" class="hero-image image-top-left">
+        <img src="images/127799921_143832643779530_4536317290387938840_n.jpg" alt="Art" class="hero-image image-top-right">
+        <img src="images/128439597_388619335584670_217926013002644080_n.jpg" alt="Art" class="hero-image image-bottom-left">
+        <img src="images/138229734_1573265082866119_9018020920845542259_n.jpg" alt="Art" class="hero-image image-bottom-right">
+        <img src="images/148701567_211829123963825_3711314587462814738_n.jpg" alt="Art" class="hero-image image-left">
+        <img src="images/149424619_425574815321690_4513740044504322037_n.jpg" alt="Art" class="hero-image image-right">
+      </div>
+      <div class="hero-content">
+        <h1>Oxygen Arts</h1>
+        <p>Discover exceptional artworks and creative visions. A curated collection showcasing contemporary and traditional art forms.</p>
+        <a href="#allworks" class="inline-block bg-white text-navy px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition" style="color: #1f2d5f;">Explore Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12" style="color: #1f2d5f;">About the Artist</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">Welcome to Oxygen Arts, the creative vision of a self-taught artist dedicated to exploring the limitless possibilities of contemporary art. With unwavering passion and relentless dedication, this talented creator has mastered multiple mediums, pushing the boundaries of artistic expression.</p>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">Each piece tells a story of artistic evolution, blending traditional techniques with innovative digital approaches. From vibrant acrylics to delicate pencil work, intricate colored pencil designs to cutting-edge digital art, every creation reflects a commitment to excellence and authentic creative vision.</p>
+          <p class="text-lg text-gray-700 mb-8 leading-relaxed font-semibold" style="color: #1f2d5f;">Having created commissioned art pieces for well-known individuals and brands, this artist's work has transcended the studio to inspire and captivate audiences worldwide.</p>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg" style="color: #1f2d5f;">Master of Multiple Mediums</h3>
+                <p class="text-gray-600">Acrylic, Pencil, Colored Pencil & Digital Art</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg" style="color: #1f2d5f;">Commissioned Works</h3>
+                <p class="text-gray-600">Created for prominent clients and recognized figures</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
+                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg" style="color: #1f2d5f;">Self-Taught Excellence</h3>
+                <p class="text-gray-600">Driven by passion and continuous artistic growth</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <div class="rounded-lg shadow-lg overflow-hidden" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%); border: 8px solid white; display: flex; align-items: center; justify-content: center; padding: 40px; min-height: 400px;">
+            <video class="w-full max-w-xs" controls style="border-radius: 8px;">
+              <source src="images/VIDEO-2021-03-17-19-13-42.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12" style="color: #1f2d5f;">New Projects & Viewings</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="project-card bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+          <img src="images/160037087_709942786350680_7461114530839342882_n.jpg" alt="Project 1" class="w-full h-64 object-contain bg-gray-100">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2" style="color: #1f2d5f;">Spring Exhibition 2025</h3>
+            <p class="text-gray-600 mb-4">A stunning collection featuring contemporary works exploring themes of identity and transformation.</p>
+            <p class="text-sm text-blue-600 font-semibold">Coming Soon</p>
+          </div>
+        </div>
+        <div class="project-card bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+          <img src="images/160046317_166648511947586_2443049358028515747_n.jpg" alt="Project 2" class="w-full h-64 object-contain bg-gray-100">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2" style="color: #1f2d5f;">Collaborative Series</h3>
+            <p class="text-gray-600 mb-4">Join us in celebrating the fusion of multiple artistic styles and mediums in one cohesive exhibition.</p>
+            <p class="text-sm text-blue-600 font-semibold">In Progress</p>
+          </div>
+        </div>
+        <div class="project-card bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+          <img src="images/160167945_262393252029673_7449999809806767348_n.jpg" alt="Project 3" class="w-full h-64 object-contain bg-gray-100">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2" style="color: #1f2d5f;">Artist Residency</h3>
+            <p class="text-gray-600 mb-4">An exclusive residency program bringing emerging and established artists together for creative collaboration.</p>
+            <p class="text-sm text-blue-600 font-semibold">Open for Applications</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Artworks Section -->
+  <section id="allworks" class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12" style="color: #1f2d5f;">All Artworks</h2>
+      <p class="text-gray-600 mb-8 text-center">Click on any image to view it larger</p>
+      <div class="lightbox-gallery" id="allArtworks"></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12" style="color: #1f2d5f;">Get In Touch</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-bold mb-6" style="color: #1f2d5f;">Contact Information</h3>
+          <div class="space-y-6">
+            <div>
+              <p class="font-semibold text-gray-700 mb-2">Email</p>
+              <p class="text-blue-600"><a href="mailto:michaelgriffithsart@yahoo.com">michaelgriffithsart@yahoo.com</a></p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-700 mb-2">Phone</p>
+              <p class="text-blue-600"><a href="tel:+5926915356">+592 691 5356</a></p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-700 mb-2">Location</p>
+              <p class="text-gray-700">Georgetown, Guyana</p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-700 mb-2">Follow Us</p>
+              <div class="flex space-x-4">
+                <a href="https://www.facebook.com/MichaelGriffithsArt" class="text-blue-600 hover:text-blue-800 text-xl">f</a>
+                <a href="#" class="text-blue-600 hover:text-blue-800 text-xl">in</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <form class="contact-form space-y-4">
+            <div>
+              <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
+            </div>
+            <div>
+              <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
+            </div>
+            <div>
+              <input type="text" placeholder="Subject" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
+            </div>
+            <div>
+              <textarea placeholder="Your Message" rows="5" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit w-full px-6 py-3 rounded-lg">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- Lightbox Modal -->
+  <div id="lightboxModal" class="modal">
+    <button class="modal-close" onclick="closeLightbox()">✕</button>
+    <div class="modal-content">
+      <button class="modal-nav modal-prev" onclick="prevImage()">❮</button>
+      <img id="lightboxImage" src="" alt="Artwork">
+      <button class="modal-nav modal-next" onclick="nextImage()">❯</button>
+      <div class="modal-counter"><span id="imageCounter">1</span> / <span id="totalImages">0</span></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-8 text-center" style="background: #1f2d5f; color: white;">
+    <p class="mb-2">&copy; 2025 Oxygen Arts. All rights reserved.</p>
+    <p class="text-sm text-gray-300">This page was created to promote the works and growth of Guyanese visual artist Michael Griffith</p>
+  </footer>
+  </div>
+
+  <!-- Art Therapy Content (Hidden by default) -->
+  <div id="therapyContent" class="hidden-page">
+  <!-- Therapy Navigation Bar -->
+  <nav class="navbar-fixed fixed w-full top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center space-x-2" onclick="goBackToIntro()">
+        <img src="images/PHOTO-2021-03-15-15-59-20.jpg" alt="Oxygen Arts" class="h-12 w-auto">
+      </a>
+      <ul class="hidden md:flex space-x-8">
+        <li><a href="#therapy-home" class="nav-link text-white hover:text-blue-200 transition">Home</a></li>
+        <li><a href="#therapy-services" class="nav-link text-white hover:text-blue-200 transition">Services</a></li>
+        <li><a href="#therapy-about" class="nav-link text-white hover:text-blue-200 transition">About</a></li>
+        <li><a href="#therapy-contact" class="nav-link text-white hover:text-blue-200 transition">Contact</a></li>
+        <li><a href="#" onclick="goBackToIntro(); return false;" class="nav-link text-white hover:text-blue-200 transition">Switch</a></li>
+      </ul>
+      <button id="therapy-menu-toggle" class="md:hidden text-white text-2xl">☰</button>
+    </div>
+    <!-- Therapy Mobile Menu -->
+    <div id="therapy-mobile-menu" class="hidden md:hidden bg-blue-800">
+      <ul class="flex flex-col space-y-2 px-4 py-4">
+        <li><a href="#therapy-home" class="text-white hover:text-blue-200 transition block py-2">Home</a></li>
+        <li><a href="#therapy-services" class="text-white hover:text-blue-200 transition block py-2">Services</a></li>
+        <li><a href="#therapy-about" class="text-white hover:text-blue-200 transition block py-2">About</a></li>
+        <li><a href="#therapy-contact" class="text-white hover:text-blue-200 transition block py-2">Contact</a></li>
+        <li><a href="#" onclick="goBackToIntro(); return false;" class="text-white hover:text-blue-200 transition block py-2 font-semibold border-t border-blue-600 pt-2 mt-2">Switch Path</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Therapy Hero Section -->
+  <section id="therapy-home" class="py-20 md:py-32" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%); color: white;">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Art Therapy & Wellness</h1>
+      <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Healing through art, meditation, and mindfulness. Transform your well-being with our therapeutic services.</p>
+      <a href="#therapy-services" class="inline-block bg-white text-navy px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition" style="color: #1f2d5f;">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="therapy-services" class="py-16 md:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12 text-center" style="color: #1f2d5f;">Our Services</h2>
+      <div class="grid md:grid-cols-2 gap-12 mb-12">
+        <!-- Group Meditation -->
+        <div class="bg-gray-50 rounded-lg p-8 shadow-lg hover:shadow-xl transition">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Group Meditation</h3>
+          <p class="text-gray-600 mb-4">Join our guided meditation sessions in a supportive group setting. Learn techniques to reduce stress, improve focus, and cultivate inner peace. Perfect for beginners and experienced practitioners alike.</p>
+          <ul class="space-y-2 text-gray-600 mb-6">
+            <li>✓ Weekly guided sessions</li>
+            <li>✓ Mindfulness training</li>
+            <li>✓ Breathing techniques</li>
+            <li>✓ Stress relief focus</li>
+          </ul>
+          <p class="font-semibold" style="color: #5a7fc8;">Sessions available throughout the week</p>
+        </div>
+
+        <!-- Hypnotherapy -->
+        <div class="bg-gray-50 rounded-lg p-8 shadow-lg hover:shadow-xl transition">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Hypnotherapy</h3>
+          <p class="text-gray-600 mb-4">Professional hypnotherapy sessions to help you overcome challenges, manage anxiety, break habits, and achieve personal goals. Work with our certified therapist in individual or group settings.</p>
+          <ul class="space-y-2 text-gray-600 mb-6">
+            <li>✓ Habit breaking</li>
+            <li>✓ Anxiety management</li>
+            <li>✓ Goal achievement</li>
+            <li>✓ Personal empowerment</li>
+          </ul>
+          <p class="font-semibold" style="color: #5a7fc8;">Individual sessions available</p>
+        </div>
+
+        <!-- Creative Expression -->
+        <div class="bg-gray-50 rounded-lg p-8 shadow-lg hover:shadow-xl transition">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Creative Expression Art Therapy</h3>
+          <p class="text-gray-600 mb-4">Unlock your creativity through guided art therapy sessions. Express emotions, process experiences, and discover healing through various artistic mediums without requiring any prior art experience.</p>
+          <ul class="space-y-2 text-gray-600 mb-6">
+            <li>✓ Non-judgmental space</li>
+            <li>✓ All skill levels welcome</li>
+            <li>✓ Emotional healing</li>
+            <li>✓ Self-discovery</li>
+          </ul>
+          <p class="font-semibold" style="color: #5a7fc8;">Group and individual sessions</p>
+        </div>
+
+        <!-- Wellness Workshops -->
+        <div class="bg-gray-50 rounded-lg p-8 shadow-lg hover:shadow-xl transition">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Wellness Workshops</h3>
+          <p class="text-gray-600 mb-4">Specialized workshops combining art, meditation, and therapeutic techniques. Topics include stress management, emotional wellness, mindfulness, and self-care practices.</p>
+          <ul class="space-y-2 text-gray-600 mb-6">
+            <li>✓ Themed workshops</li>
+            <li>✓ Expert facilitation</li>
+            <li>✓ Take-home tools</li>
+            <li>✓ Community building</li>
+          </ul>
+          <p class="font-semibold" style="color: #5a7fc8;">Monthly workshops available</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Therapy Section -->
+  <section id="therapy-about" class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12 text-center" style="color: #1f2d5f;">About Our Approach</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">At Oxygen Arts, we believe in the transformative power of creative expression and mindfulness practices. Our integrated approach combines art therapy, meditation, and hypnotherapy to address mental, emotional, and spiritual well-being.</p>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">Whether you're seeking stress relief, personal growth, or healing from past experiences, our certified therapists and facilitators are here to guide you on your wellness journey in a safe, supportive environment.</p>
+          <div class="space-y-4 mt-8">
+            <div class="flex items-start space-x-4">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%); color: white;">✓</div>
+              <div>
+                <h4 class="font-bold" style="color: #1f2d5f;">Certified Professionals</h4>
+                <p class="text-gray-600">All facilitators are trained and certified in their respective disciplines</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%); color: white;">✓</div>
+              <div>
+                <h4 class="font-bold" style="color: #1f2d5f;">Personalized Care</h4>
+                <p class="text-gray-600">Each session is tailored to your unique needs and goals</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%); color: white;">✓</div>
+              <div>
+                <h4 class="font-bold" style="color: #1f2d5f;">Safe Space</h4>
+                <p class="text-gray-600">A confidential, non-judgmental environment for healing and growth</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%); border-radius: 12px; padding: 40px; color: white; text-align: center;">
+          <svg class="w-24 h-24 mx-auto mb-6 opacity-80" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+          </svg>
+          <h3 class="text-2xl font-bold mb-4">Your Wellness Journey</h3>
+          <p class="text-sm opacity-90">Begins with a single step toward healing, growth, and transformation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Therapy Contact Section -->
+  <section id="therapy-contact" class="py-16 md:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12 text-center" style="color: #1f2d5f;">Book Your Session</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-bold mb-6" style="color: #1f2d5f;">Get In Touch</h3>
+          <div class="space-y-6">
+            <div>
+              <p class="font-semibold text-gray-700 mb-2">Email</p>
+              <p class="text-blue-600"><a href="mailto:michaelgriffithsart@yahoo.com">michaelgriffithsart@yahoo.com</a></p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-700 mb-2">Phone</p>
+              <p class="text-blue-600"><a href="tel:+5926915356">+592 691 5356</a></p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-700 mb-2">Location</p>
+              <p class="text-gray-700">Georgetown, Guyana</p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-700 mb-2">Hours</p>
+              <p class="text-gray-700">Monday - Saturday: 10 AM - 6 PM<br>Sunday: By Appointment</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <form class="contact-form space-y-4">
+            <div>
+              <input type="text" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
+            </div>
+            <div>
+              <input type="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required>
+            </div>
+            <div>
+              <select class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900" required>
+                <option value="">Select Service</option>
+                <option value="meditation">Group Meditation</option>
+                <option value="hypnotherapy">Hypnotherapy</option>
+                <option value="art-therapy">Creative Expression Art Therapy</option>
+                <option value="workshop">Wellness Workshop</option>
+              </select>
+            </div>
+            <div>
+              <textarea placeholder="Tell us about your interests or goals" rows="4" class="w-full px-4 py-3 rounded-lg bg-gray-50 text-gray-900 placeholder-gray-500" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit w-full px-6 py-3 rounded-lg">Request Consultation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Therapy Footer -->
+  <footer class="py-8 text-center" style="background: #1f2d5f; color: white;">
+    <p class="mb-2">&copy; 2025 Oxygen Arts - Art Therapy & Wellness. All rights reserved.</p>
+    <p class="text-sm text-gray-300">Healing through art, meditation, and mindfulness</p>
+  </footer>
+  </div>
+
+  <script>
+    function goToGallery() {
+      const introPage = document.getElementById('introPage');
+      const mainContent = document.getElementById('mainContent');
+      introPage.style.display = 'none';
+      mainContent.classList.remove('hidden-page');
+    }
+
+    function goToTherapy() {
+      const introPage = document.getElementById('introPage');
+      const mainContent = document.getElementById('mainContent');
+      const therapyContent = document.getElementById('therapyContent');
+      introPage.style.display = 'none';
+      mainContent.classList.add('hidden-page');
+      therapyContent.classList.remove('hidden-page');
+    }
+
+    // Gallery images array - all images in the images folder
+    const allImages = [
+      'images/116946381_2808868086003167_1617765084909351254_o.jpg',
+      'images/127799921_143832643779530_4536317290387938840_n.jpg',
+      'images/128439597_388619335584670_217926013002644080_n.jpg',
+      'images/128542482_219001666477977_2163821970153198611_n.jpg',
+      'images/128699960_529941967962454_3451760427839254560_n.jpg',
+      'images/138229734_1573265082866119_9018020920845542259_n.jpg',
+      'images/138675205_145054350633897_4167739104494294554_n.jpg',
+      'images/148701567_211829123963825_3711314587462814738_n.jpg',
+      'images/149424619_425574815321690_4513740044504322037_n.jpg',
+      'images/155970005_189325819617781_4125812528680866731_n.jpg',
+      'images/157921906_2987689128121061_2860223304189027219_o.jpg',
+      'images/158730206_125623219563760_1793326229656590702_o.jpg',
+      'images/158928395_126049356187813_2686191686179472378_o.jpg',
+      'images/159828942_284494806401020_406479514592790557_n.jpg',
+      'images/159846358_900145134134660_2699787513090815236_n.jpg',
+      'images/159899646_1881512958672268_2880277609603757372_n.jpg',
+      'images/159942580_532348514411937_8295767217575972581_n.jpg',
+      'images/160037087_709942786350680_7461114530839342882_n.jpg',
+      'images/160046317_166648511947586_2443049358028515747_n.jpg',
+      'images/160167945_262393252029673_7449999809806767348_n.jpg',
+      'images/160214764_458212282122566_2737232121346837432_n.jpg',
+      'images/160277726_1121393874972969_7849270369081973265_n.jpg',
+      'images/160402949_781708096089122_219839139131812568_n.jpg',
+      'images/160442892_1366014630457917_8666899503274369708_n.jpg',
+      'images/160525094_127671609233459_1313667615221997510_n.jpg',
+      'images/160551087_208977111028048_744843944256489164_n.jpg',
+      'images/160558093_242870784232148_8475236232214293900_n.jpg',
+      'images/160604142_467061631106366_6304822987331973874_n.jpg',
+      'images/160747976_883843045517751_4526041936510654267_n.jpg',
+      'images/160822065_265498841725177_5651725204665379091_n.jpg',
+      'images/160924119_283960693138603_6854454029605684278_n.jpg',
+      'images/161047863_2889736214637866_4974832619129555862_n.jpg',
+      'images/161049143_962619780940061_6300577830818055993_n.jpg',
+      'images/161122019_1449276192087535_6967257205635176237_n.jpg',
+      'images/161183915_449706882919186_1941055715959420793_n.jpg',
+      'images/161223240_128585795934169_8892119148943863568_o.jpg',
+      'images/161268625_1237325413349405_3741252169905017496_n.jpg',
+      'images/161270684_468388044313260_9165893750853606606_n.jpg',
+      'images/161380298_480911419593388_3282589324849209110_n.jpg',
+      'images/161387838_350045582968231_3537323338882326722_n.jpg',
+      'images/161395653_1587106478155432_2495291344825005523_n.jpg',
+      'images/161543972_773712903566787_8505924739223249469_n.jpg',
+      'images/161543993_277679310475961_4499333932749047142_n.jpg',
+      'images/161599347_229024545618824_8146029210068105223_n.jpg',
+      'images/161650983_446528886600291_9110535919841202322_n.jpg',
+      'images/161662750_297817878598364_2047019579553579755_n.jpg',
+      'images/161664568_552532816126070_5830291107464285689_n.jpg',
+      'images/161668871_2890507414505205_7653681837665520857_n.jpg',
+      'images/161700489_998609467337762_4786960460963430060_n.jpg',
+      'images/161767863_430179358282477_2551325063247198098_n.jpg',
+      'images/161779721_724626428199941_3285481604139700343_n.jpg',
+      'images/161787427_165187622086620_1143395213487316397_n.jpg',
+      'images/162094162_274577104267073_3351290227848790579_n.jpg',
+      'images/162168350_3659019797557094_2375203803721502647_n.jpg',
+      'images/47168069_2330576130499034_5514758254539833344_o.jpg',
+      'images/52696128_2206576326256904_828811383981211648_n.png',
+      'images/68821507_2506492622907383_9086687434258776064_o.jpg',
+      'images/78647323_2602707789952532_6840695696257974272_o.jpg',
+      'images/PHOTO-2021-03-15-15-51-07.jpg',
+      'images/PHOTO-2021-03-16-11-54-49.jpg',
+      'images/PHOTO-2021-03-16-12-32-55.jpg',
+      'images/PHOTO-2021-03-16-12-34-01.jpg',
+      'images/PHOTO-2021-03-16-12-35-29.jpg',
+      'images/PHOTO-2021-03-16-12-35-30 2.jpg',
+      'images/PHOTO-2021-03-16-12-35-30.jpg',
+      'images/cange.jpg',
+    ];
+
+    let currentImageIndex = 0;
+
+    // Initialize lightbox gallery
+    document.addEventListener('DOMContentLoaded', function() {
+      const gallery = document.getElementById('allArtworks');
+      const totalImages = document.getElementById('totalImages');
+      
+      totalImages.textContent = allImages.length;
+
+      allImages.forEach((image, index) => {
+        const item = document.createElement('div');
+        item.className = 'lightbox-item';
+        item.onclick = () => openLightbox(index);
+        
+        const img = document.createElement('img');
+        img.src = image;
+        img.alt = `Artwork ${index + 1}`;
+        
+        item.appendChild(img);
+        gallery.appendChild(item);
+      });
+    });
+
+    function openLightbox(index) {
+      currentImageIndex = index;
+      const modal = document.getElementById('lightboxModal');
+      const lightboxImage = document.getElementById('lightboxImage');
+      const imageCounter = document.getElementById('imageCounter');
+      
+      lightboxImage.src = allImages[currentImageIndex];
+      imageCounter.textContent = currentImageIndex + 1;
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      modal.classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % allImages.length;
+      const lightboxImage = document.getElementById('lightboxImage');
+      const imageCounter = document.getElementById('imageCounter');
+      
+      lightboxImage.src = allImages[currentImageIndex];
+      imageCounter.textContent = currentImageIndex + 1;
+    }
+
+    function prevImage() {
+      currentImageIndex = (currentImageIndex - 1 + allImages.length) % allImages.length;
+      const lightboxImage = document.getElementById('lightboxImage');
+      const imageCounter = document.getElementById('imageCounter');
+      
+      lightboxImage.src = allImages[currentImageIndex];
+      imageCounter.textContent = currentImageIndex + 1;
+    }
+
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', function(event) {
+      const modal = document.getElementById('lightboxModal');
+      if (modal.classList.contains('show')) {
+        if (event.key === 'ArrowRight') nextImage();
+        if (event.key === 'ArrowLeft') prevImage();
+        if (event.key === 'Escape') closeLightbox();
+      }
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when link is clicked
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+          e.preventDefault();
+          const element = document.querySelector(href);
+          const offset = 80;
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    // Therapy mobile menu toggle
+    const therapyMenuToggle = document.getElementById('therapy-menu-toggle');
+    const therapyMobileMenu = document.getElementById('therapy-mobile-menu');
+    if (therapyMenuToggle) {
+      therapyMenuToggle.addEventListener('click', () => {
+        therapyMobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Back to intro function
+    function goBackToIntro() {
+      event.preventDefault();
+      const introPage = document.getElementById('introPage');
+      const mainContent = document.getElementById('mainContent');
+      const therapyContent = document.getElementById('therapyContent');
+      
+      introPage.style.display = 'flex';
+      mainContent.classList.add('hidden-page');
+      therapyContent.classList.add('hidden-page');
+    }
+  </script>
+  <script src="main.js"></script>
+</body>
+</html>
