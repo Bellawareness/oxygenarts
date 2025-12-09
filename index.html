@@ -1127,8 +1127,43 @@
   <footer class="py-8 text-center" style="background: #1f2d5f; color: white; padding: 2rem 1.5rem !important;">
     <p class="mb-2" style="font-size: 0.9rem; padding: 0 1.5rem;">&copy; 2025 Oxygen Arts. All rights reserved.</p>
     <p class="text-xs text-gray-300 mb-3" style="font-size: 0.8rem; padding: 0 1.5rem; line-height: 1.5;">This page was created to promote the works and growth of Guyanese visual artist Michael Griffith</p>
-  
+    <button id="feedbackLink" onclick="openFeedbackModal(); return false;"
+      class="bg-blue-700 text-white font-bold py-2 px-6 rounded shadow-lg mt-3 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      style="margin-top:8px;">
+      Give Feedback
+    </button>
   </footer>
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+      <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-8 relative">
+        <button onclick="closeFeedbackModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+        <h3 class="text-xl font-bold mb-4" style="color: #1f2d5f;">We value your feedback</h3>
+        <form id="feedbackForm" action="https://formspree.io/f/xdkqzqng" method="POST" class="space-y-4">
+          <label class="block text-sm font-semibold text-gray-700">Your Name (optional)
+            <input type="text" name="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" autocomplete="name">
+          </label>
+          <label class="block text-sm font-semibold text-gray-700">Email (optional)
+            <input type="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" autocomplete="email">
+          </label>
+          <label class="block text-sm font-semibold text-gray-700">Did you receive any services?
+            <select name="service" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+              <option value="">Select...</option>
+              <option value="Art Therapy">Art Therapy</option>
+              <option value="Hypnotherapy">Hypnotherapy</option>
+              <option value="Art Gallery">Art Gallery</option>
+              <option value="Website Review">Website Review</option>
+              <option value="Other">Other</option>
+              <option value="No">No</option>
+            </select>
+          </label>
+          <label class="block text-sm font-semibold text-gray-700">Your Feedback
+            <textarea name="feedback" required rows="4" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Share your thoughts..."></textarea>
+          </label>
+          <button type="submit" class="w-full py-2 px-4 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold">Submit</button>
+        </form>
+        <div id="feedbackSuccess" class="hidden text-green-600 mt-4 font-semibold">Thank you for your feedback!</div>
+      </div>
+    </div>
   </div>
 
   <!-- Art Therapy Content (Hidden by default) -->
@@ -1349,21 +1384,21 @@
   <section id="therapy-gallery" class="py-16 md:py-24" style="background: linear-gradient(135deg, #1f2d5f 0%, #5a7fc8 100%);">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="section-title text-3xl md:text-4xl font-bold mb-12 text-center text-white">Our Wellness Journey</h2>
-      
-      <!-- Gallery Grid -->
-      <div class="grid md:grid-cols-3 gap-6">
-
+      <!-- Mobile Slideshow -->
+      <div id="wellnessSlideshow" class="md:hidden relative w-full max-w-xs mx-auto" style="height: 320px;">
+        <img id="wellnessSlideImg" src="images/therapy/PHOTO-2025-12-02-22-03-40 3.jpg" alt="Wellness" class="w-full h-full object-cover rounded-lg shadow-lg fade-slide" style="border: 8px solid white; transition: opacity 1s; opacity: 1;">
+      </div>
+      <!-- Desktop Grid -->
+      <div class="hidden md:grid md:grid-cols-3 gap-6">
         <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
           <img src="images/therapy/PHOTO-2025-12-02-22-03-40 3.jpg" alt="Wellness" class="w-full h-full object-cover">
         </div>
         <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
           <img src="images/therapy/PHOTO-2025-12-02-22-03-40 4.jpg" alt="Wellness" class="w-full h-full object-cover">
         </div>
-      
         <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
           <img src="images/therapy/PHOTO-2025-12-02-22-03-41 2.jpg" alt="Wellness" class="w-full h-full object-cover">
         </div>
-        
         <div class="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:scale-105" style="border: 8px solid white; aspect-ratio: 1;">
           <img src="images/therapy/PHOTO-2025-12-02-22-06-53 2.jpg" alt="Wellness" class="w-full h-full object-cover">
         </div>
@@ -1374,70 +1409,33 @@
           <img src="images/therapy/PHOTO-2025-12-02-22-06-54 2.jpg" alt="Wellness" class="w-full h-full object-cover">
         </div>
       </div>
+      <style>
+        @media (max-width: 767px) {
+          .fade-slide {
+            opacity: 1;
+            transition: opacity 1s;
+          }
+        }
+      </style>
     </div>
   </section>
 
   <!-- Hypnotherapy Testimonials Section -->
   <section id="testimonials" class="py-16 md:py-24 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="section-title text-3xl md:text-4xl font-bold mb-12 text-center" style="color: #1f2d5f;">Client Success Stories</h2>
-      
-      <!-- Hypnotherapy Healing Testimonials -->
-      <div class="space-y-16">
-        <!-- Testimonial 1 -->
-        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="grid md:grid-cols-2 gap-0 items-center">
-            <img src="images/therapy/PHOTO-2025-12-02-22-03-40 2.jpg" alt="Hypnotherapy Client Success" class="w-full h-full object-cover min-h-64 md:min-h-80">
-            <div class="p-8">
-              <div class="flex text-yellow-400 mb-4">
-                <span>★★★★★</span>
-              </div>
-              <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Skin Tags Healing Journey</h3>
-              <p class="text-gray-700 italic mb-4 leading-relaxed">"I came to Michael with multiple skin tags that had been bothering me for years. Through his hypnotherapy sessions, I was able to address the underlying issues and my body's response. The results have been remarkable, not only did the skin tags disappear, but I also gained emotional clarity and peace of mind."</p>
-              <p class="font-semibold" style="color: #1f2d5f;">- Nikki M., Georgetown</p>
-              <p class="text-gray-600 text-sm">Hypnotherapy Client, 8-week program</p>
-            </div>
-          </div>
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="section-title text-3xl md:text-4xl font-bold mb-8" style="color: #1f2d5f;">Hypnotherapy Results</h2>
+      <p class="text-lg text-gray-700 mb-6">
+        Clients have experienced improvement in skin tag healing and overall well-being through professional hypnotherapy.<br>
+        The process involved 2 sessions, each up to 45 minutes, and it took 30–35 days to see results.<br>
+        Individual results may vary.
+      </p>
+      <div class="grid md:grid-cols-2 gap-8 mt-8">
+        <div class="bg-white rounded-lg shadow-lg p-4">
+          <img src="images/therapy/PHOTO-2025-12-02-22-03-40 2.jpg" alt="Skin Tag Healing After Therapy" class="w-full h-64 object-cover rounded mb-4">
         </div>
-
-        <!-- Testimonial 2 -->
-        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="grid md:grid-cols-2 gap-0 items-center">
-            <div class="p-8 md:order-2">
-              <div class="flex text-yellow-400 mb-4">
-                <span>★★★★★</span>
-              </div>
-              <h3 class="text-2xl font-bold mb-4" style="color: #1f2d5f;">Remarkable Skin Transformation</h3>
-              <p class="text-gray-700 italic mb-4 leading-relaxed">"I was skeptical about hypnotherapy for physical issues, but the skin tags on my arm were persistent. Michael's sessions were incredibly relaxing and empowering. Over a few weeks, I watched as the skin tags shrank and disappeared completely. I highly recommend his services."</p>
-              <p class="font-semibold" style="color: #1f2d5f;">- Susie L., East Coast</p>
-              <p class="text-gray-600 text-sm">Hypnotherapy Client, 10-week program</p>
-            </div>
-            <img src="images/therapy/PHOTO-2025-12-02-22-03-40 6.jpg" alt="Hypnotherapy Client Success" class="w-full h-full object-cover min-h-64 md:min-h-80 md:order-1">
-          </div>
+        <div class="bg-white rounded-lg shadow-lg p-4">
+          <img src="images/therapy/PHOTO-2025-12-02-22-03-40 6.jpg" alt="Skin Tag Healing After Therapy" class="w-full h-64 object-cover rounded mb-4">
         </div>
-      </div>
-      
-      <!-- Additional Testimonials Info -->
-      <div class="max-w-4xl mx-auto mt-16 bg-blue-50 rounded-lg p-8 border-l-4" style="border-color: #5a7fc8;">
-        <h3 class="text-xl font-bold mb-4" style="color: #1f2d5f;">Why Choose Michael's Hypnotherapy?</h3>
-        <ul class="space-y-3">
-          <li class="flex items-start space-x-3">
-            <span style="color: #5a7fc8;" class="font-bold">✓</span>
-            <span class="text-gray-700"><strong>Holistic Healing:</strong> Addresses both physical and emotional aspects of wellness</span>
-          </li>
-          <li class="flex items-start space-x-3">
-            <span style="color: #5a7fc8;" class="font-bold">✓</span>
-            <span class="text-gray-700"><strong>Professional Certification:</strong> Trained hypnotherapist with years of experience</span>
-          </li>
-          <li class="flex items-start space-x-3">
-            <span style="color: #5a7fc8;" class="font-bold">✓</span>
-            <span class="text-gray-700"><strong>Proven Results:</strong> Clients report significant improvement in health conditions and emotional well-being</span>
-          </li>
-          <li class="flex items-start space-x-3">
-            <span style="color: #5a7fc8;" class="font-bold">✓</span>
-            <span class="text-gray-700"><strong>Personalized Approach:</strong> Each session tailored to your specific needs and goals</span>
-          </li>
-        </ul>
       </div>
     </div>
   </section>
@@ -1753,6 +1751,32 @@
     });
 
     // Mobile menu toggle
+        // Mobile Wellness Journey Slideshow
+        const wellnessImages = [
+          "images/therapy/PHOTO-2025-12-02-22-03-40 3.jpg",
+          "images/therapy/PHOTO-2025-12-02-22-03-40 4.jpg",
+          "images/therapy/PHOTO-2025-12-02-22-03-41 2.jpg",
+          "images/therapy/PHOTO-2025-12-02-22-06-53 2.jpg",
+          "images/therapy/PHOTO-2025-12-02-22-06-53 3.jpg",
+          "images/therapy/PHOTO-2025-12-02-22-06-54 2.jpg"
+        ];
+        let wellnessSlideIdx = 0;
+        function showWellnessSlide(idx) {
+          const img = document.getElementById('wellnessSlideImg');
+          if (!img) return;
+          img.style.opacity = 0;
+          setTimeout(() => {
+            img.src = wellnessImages[idx];
+            img.style.opacity = 1;
+          }, 400);
+        }
+        function nextWellnessSlide() {
+          wellnessSlideIdx = (wellnessSlideIdx + 1) % wellnessImages.length;
+          showWellnessSlide(wellnessSlideIdx);
+        }
+        if (window.innerWidth < 768) {
+          setInterval(nextWellnessSlide, 3000);
+        }
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     
@@ -1804,6 +1828,62 @@
       mainContent.classList.add('hidden-page');
       therapyContent.classList.add('hidden-page');
     }
+
+    // Feedback Modal Functions
+    function openFeedbackModal() {
+      document.getElementById('feedbackModal').classList.remove('hidden');
+    }
+    function closeFeedbackModal() {
+      document.getElementById('feedbackModal').classList.add('hidden');
+      document.getElementById('feedbackForm').reset();
+      document.getElementById('feedbackSuccess').classList.add('hidden');
+    }
+
+    // Feedback form submission
+    document.addEventListener('DOMContentLoaded', function() {
+      // Feedback form submit
+      var feedbackForm = document.getElementById('feedbackForm');
+      if (feedbackForm) {
+        feedbackForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var formData = new FormData(feedbackForm);
+          fetch(feedbackForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(function(response) {
+            if (response.ok) {
+              document.getElementById('feedbackSuccess').classList.remove('hidden');
+              feedbackForm.reset();
+            } else {
+              response.json().then(function(data) {
+                alert(data.error || 'There was a problem submitting your feedback.');
+              });
+            }
+          }).catch(function() {
+            alert('There was a problem submitting your feedback.');
+          });
+        });
+      }
+
+      // Feedback link listeners for both footers
+      var feedbackLink = document.getElementById('feedbackLink');
+      if (feedbackLink) {
+        feedbackLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          openFeedbackModal();
+        });
+      }
+      var feedbackLinkTherapy = document.getElementById('feedbackLinkTherapy');
+      if (feedbackLinkTherapy) {
+        feedbackLinkTherapy.addEventListener('click', function(e) {
+          e.preventDefault();
+          openFeedbackModal();
+        });
+      }
+    });
   </script>
   <script src="main.js"></script>
 </body>
